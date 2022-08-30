@@ -4,7 +4,11 @@ const { name, add } = require("./other");
 const http = require("http");
 
 const server = http.createServer((req, res) => {
-    res.end("hello node.js");
+    if (req.url === "/") {
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.write("<p>This is home page</p>");
+        res.end();
+    }
 });
 
 const PORT = 5000;
